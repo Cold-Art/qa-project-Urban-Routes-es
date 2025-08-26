@@ -88,7 +88,7 @@ class UrbanRoutesPage:
     def hacerclick_taxi(self):
         button = WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.orderTaxiButton))
         button.click()
-        #print('hizo click')
+        print('hizo click')
 
     def click_On_Comfort_button(self):
         self.driver.find_element(*self.selectComfortButton).click()
@@ -150,19 +150,14 @@ class TestUrbanRoutes:
         from selenium.webdriver import DesiredCapabilities
         capabilities = DesiredCapabilities.CHROME
         capabilities["goog:loggingPrefs"] = {'performance': 'ALL'}
-        chrome_options = Options()
-        chrome_options.add_argument('window-size=1920,1080')
         cls.driver = webdriver.Chrome()
-        driver = webdriver.Chrome(options=chrome_options)
-        #driver.get(data.urban_routes_url)
-
 
 
     #paso 2 ya esta hecho arriba, hasta donde se ponen las direcciones
 
     #paso 3 clickear el boton de "pedir un taxi"
-    #def test_click_on_pedirUnTaxi(self):
-    #    self.hacerclick_taxi()
+    def test_click_on_pedirUnTaxi(self):
+        self.hacerclick_taxi()
 
     def test_set_route(self):
         self.driver.get(data.urban_routes_url)
