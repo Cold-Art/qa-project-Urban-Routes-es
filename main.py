@@ -151,13 +151,7 @@ class TestUrbanRoutes:
         capabilities = DesiredCapabilities.CHROME
         capabilities["goog:loggingPrefs"] = {'performance': 'ALL'}
         cls.driver = webdriver.Chrome()
-
-
-    #paso 2 ya esta hecho arriba, hasta donde se ponen las direcciones
-
-    #paso 3 clickear el boton de "pedir un taxi"
-    def test_click_on_pedirUnTaxi(self):
-        self.hacerclick_taxi()
+        cls.routes_page = UrbanRoutesPage(cls.driver)
 
     def test_set_route(self):
         self.driver.get(data.urban_routes_url)
@@ -166,6 +160,9 @@ class TestUrbanRoutes:
         address_to = data.address_to
         routes_page.set_route(address_from, address_to)
         time.sleep(3)
+
+    def test_click_on_pedirUnTaxi(self):
+        self.routes_page.hacerclick_taxi()
 
     @classmethod
     def teardown_class(cls):
